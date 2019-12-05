@@ -20,14 +20,14 @@ const em = styled.em`
 `
 
 // Any routes that start with 'dynamic' will be treated as non-static routes
-addPrefetchExcludes(['index'])
+addPrefetchExcludes(['dynamic'])
 
 function App() {
   return (
     <Root>
       <GlobalStyle />
       <div className="content">
-        <React.Suspense fallback={<em>Loading...</em>}>
+        <React.Suspense fallback={<em>&nbsp;</em>}>
           <MDXProvider components={{ MainVideo, em, p, table, Spacer, Link, dl, dd, dt, Spacer }}>
             <Router>
               <Dynamic path="dynamic" />
