@@ -20,7 +20,7 @@ const em = styled.em`
 `
 
 // Any routes that start with 'dynamic' will be treated as non-static routes
-addPrefetchExcludes(['dynamic'])
+addPrefetchExcludes(['index'])
 
 function App() {
   return (

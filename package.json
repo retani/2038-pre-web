@@ -7,7 +7,7 @@
     "build": "react-static build",
     "analyze": "react-static build --analyze",
     "serve": "serve dist -p 3000",
-    "serve:live": "npm build && serve dist"
+    "serve:live": "serve dist"
   },
   "dependencies": {
     "@mdx-js/react": "^1.5.1",
@@ -19,11 +19,10 @@
     "react-static": "^7.2.0",
     "react-static-plugin-mdx": "^7.2.2",
     "react-static-plugin-reach-router": "^7.2.0",
-    "react-static-plugin-sitemap": "^7.2.0",
     "react-static-plugin-source-filesystem": "^7.2.0",
     "reset-css": "^5.0.1",
-    "styled-components": "^4.4.1",
-    "serve": "^11.1.0"
+    "serve": "^11.1.0",
+    "styled-components": "^4.4.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.2",
