@@ -16,6 +16,8 @@ export default ({vimeoId}) =>  <Container>
 const Container = styled.div`
   margin-bottom: ${dist.spacer};
   box-sizing: content-box;
-  height: 177.78%;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
   background: rgba(0,0,0,0.1);
 `
