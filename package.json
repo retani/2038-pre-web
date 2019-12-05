@@ -6,7 +6,8 @@
     "stage": "react-static build --staging",
     "build": "react-static build",
     "analyze": "react-static build --analyze",
-    "serve": "serve dist -p 3000"
+    "serve": "serve dist -p 3000",
+    "serve:live": "npm build && serve dist"
   },
   "dependencies": {
     "@mdx-js/react": "^1.5.1",
@@ -21,7 +22,8 @@
     "react-static-plugin-sitemap": "^7.2.0",
     "react-static-plugin-source-filesystem": "^7.2.0",
     "reset-css": "^5.0.1",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "serve": "^11.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.2",
@@ -31,7 +33,6 @@
     "eslint-plugin-flowtype": "^4.2.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.14.3",
-    "serve": "^11.1.0"
+    "eslint-plugin-react": "^7.14.3"
   }
 }
