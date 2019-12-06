@@ -1,38 +1,54 @@
 import React, { useState } from 'react'
 import Vimeo from '@u-wave/react-vimeo'
 import styled from 'styled-components'
+import Fullscreen from "react-full-screen";
 
 import { dist, colors } from '../config/styles'
 import ButtonLarge from './ButtonLarge'
 
 const MainVideo = ({vimeoId}) => { 
+  const [loaded, setLoaded] = useState(false);
   const [shouldPlay, setShouldPlay] = useState(false);
   const [playing, setPlaying] = useState(false);
+  const [fullscreen, setFullscreen] = useState(false);
 
   return <Container>
-    <Vimeo
-      video={vimeoId}
-      responsive
-      play={shouldPlay}
-      id="player"
-      paused={!shouldPlay}
-      controls={false}
-      onPlay={ () => setPlaying(true) }
-      onPause={ () => setPlaying(false) }
-      onEnd={ () => setPlaying(false) }
-      onError={ () => setPlaying(false) }
-    />
-    {/*shouldPlay && "shouldPlay"}
-    {playing && "playing"*/}
-    <Overlay playing={shouldPlay}>
-      <ButtonContainer>
-        <ButtonLarge style={{color: (!playing && shouldPlay ? colors.blue : null)}}
-            onClick={ () => (playing === shouldPlay) && setShouldPlay(!shouldPlay) }
-          >
-          { playing ? "STOP" : "PLAY"}
-        </ButtonLarge>
-      </ButtonContainer>
-    </Overlay>
+    <Fullscreen
+        enabled={fullscreen}
+        onChange={f => setFullscreen(f)}
+      >
+      <Vimeo
+        video={vimeoId}
+        responsive
+        play={shouldPlay}
+        id="player"
+        paused={!shouldPlay}
+        controls={false}
+        onPlay={ () => setPlaying(true) }
+        onPause={ () => setPlaying(false) }
+        onEnd={ () => {setPlaying(false); setShouldPlay(false)} }
+        onError={ () => {setPlaying(false); setShouldPlay(false)} }
+        onLoaded={ () => setLoaded(true)}
+      />
+      {/*shouldPlay && "shouldPlay"}
+      {playing && "playing"*/}
+      <Overlay playing={shouldPlay}>
+        <ButtonContainer>
+          { loaded &&
+            <ButtonLarge style={{color: (!playing && shouldPlay ? colors.blue : null)}}
+                  onClick={ () => (playing === shouldPlay) && setShouldPlay(!shouldPlay) }
+                >
+              { playing ? "STOP" : "PLAY"}
+            </ButtonLarge>
+          }
+          {/*<ButtonLarge 
+              onClick={ () => setFullscreen(!fullscreen) }
+            >
+            fs
+          </ButtonLarge>*/}
+        </ButtonContainer>
+      </Overlay>
+    </Fullscreen>
   </Container>
 }
 
