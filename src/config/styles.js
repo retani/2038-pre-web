@@ -20,6 +20,11 @@ const dist = {
   spacer: "40px",
 }
 
+const colors = {
+  bg: "#D8D8D8",
+  blue: "#0000ff"
+}
+
 const snippets = {
   typography: {
     topAdjust: `
@@ -44,6 +49,8 @@ const globalStyles = `
     @media ${ breakpoints.small } {
       font-size: ${ metrics.small.fontSizePx }px;
     }
+
+    background-color: ${ colors.bg };
   }
 
   * {
@@ -60,7 +67,9 @@ const globalStyles = `
 `
 
 export {
+  metrics,
   globalStyles,
   dist,
+  colors,
   snippets
 }

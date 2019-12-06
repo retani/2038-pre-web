@@ -10,6 +10,8 @@ import { globalStyles } from './config/styles'
 import MainVideo from 'components/MainVideo'
 import { p, table, dl, dd, dt } from 'components/HtmlElements'
 import Spacer from 'components/Spacer'
+import Button from 'components/Button'
+import Ical from 'components/iCal'
 
 import 'reset-css';
 
@@ -28,7 +30,7 @@ function App() {
       <GlobalStyle />
       <div className="content">
         <React.Suspense fallback={<em>&nbsp;</em>}>
-          <MDXProvider components={{ MainVideo, em, p, table, Spacer, Link, dl, dd, dt, Spacer }}>
+          <MDXProvider components={{ MainVideo, em, p, table, Spacer, Link, dl, dd, dt, Spacer, Button, iCal: Ical }}>
             <Router>
               <Dynamic path="dynamic" />
               <Routes path="*" />

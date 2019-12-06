@@ -9,7 +9,10 @@ const blockStyle = `
   margin-right: ${ dist.spacer };
 `
 
-const p = styled.p`${blockStyle}`
+const p = styled.p`
+  ${blockStyle}
+  ${ props => props.color && "color:" + props.color };
+`
 
 const table = styled.table`${blockStyle}`
 
