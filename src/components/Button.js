@@ -36,6 +36,7 @@ const Text = styled.span`
   text-align:center;
   line-height: 58px;
   font-size: ${ metrics.large.fontSizePx }px;
+  user-select: none;
 `
 
 const Svg = styled.svg``

@@ -42,6 +42,7 @@ const Text = styled.div`
   text-align:center;
   line-height: 88px;
   font-size: ${ 1.8 * metrics.large.fontSizePx }px;
+  user-select: none;
 `
 
 const Svg = styled.svg`
