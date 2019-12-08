@@ -6,6 +6,7 @@ import debounce from 'debounce'
 
 import { dist, colors } from '../config/styles'
 import ButtonLarge from './ButtonLarge'
+import FullscreenButton from './FullscreenButton'
 
 
 let timeoutHandler = null
@@ -17,24 +18,28 @@ const MainVideo = ({vimeoId}) => {
   const [fullscreen, setFullscreen] = useState(false);
   const [overlay, setOverlay] = useState(false);
 
-  const mouseMove = () => {
+  const mouseMove = debounce(() => {
     setOverlay(true)
     if (timeoutHandler) {
       clearTimeout(timeoutHandler)
     }
     timeoutHandler = setTimeout(()=>setOverlay(false),700)
-  }
+  },10)
 
   const triggerPlay = debounce(() => {
     (playing === shouldPlay) && setShouldPlay(!shouldPlay)
-  }, 200)
+  }, 200, true)
 
-  return <Container>
-    <Fullscreen
-        enabled={fullscreen}
-        onChange={f => setFullscreen(f)}
-      >
+  return  <Fullscreen
+      enabled={fullscreen}
+      onChange={f => setFullscreen(f)}
+    >
+    <Container isFullscreen={fullscreen}>
       <Vimeo
+        style={{
+          position:"relative",
+          top:"50%"
+        }}
         video={vimeoId}
         responsive
         play={shouldPlay}
@@ -47,9 +52,7 @@ const MainVideo = ({vimeoId}) => {
         onError={ () => {setPlaying(false); setShouldPlay(false)} }
         onLoaded={ () => setLoaded(true)}
       />
-      {/*shouldPlay && "shouldPlay"}
-      {playing && "playing"*/}
-      <Overlay show={overlay || !playing} onMouseMove={mouseMove} onTouchStart={triggerPlay}>
+      <Overlay show={overlay || !playing} onMouseMove={mouseMove} onTouchEnd={()=>playing&&triggerPlay}>
         <ButtonContainer>
           { loaded &&
             <ButtonLarge style={{color: (!playing && shouldPlay ? colors.blue : null)}}
@@ -58,15 +61,16 @@ const MainVideo = ({vimeoId}) => {
               { playing ? "STOP" : "PLAY"}
             </ButtonLarge>
           }
-          {/*<ButtonLarge 
-              onClick={ () => setFullscreen(!fullscreen) }
-            >
-            fs
-          </ButtonLarge>*/}
         </ButtonContainer>
+        <FullscreenButtonContainer>
+          <FullscreenButton 
+            onClick={ event => { setFullscreen(!fullscreen) } }
+            isOn={fullscreen}
+          />
+        </FullscreenButtonContainer>
       </Overlay>
-    </Fullscreen>
-  </Container>
+    </Container>
+  </Fullscreen>
 }
 
 export default MainVideo
@@ -79,7 +83,8 @@ const Container = styled.div`
   padding-bottom: 56.25%;
   background: rgba(0,0,0,0.1);
   position: relative;
-`
+  ${ props => props.isFullscreen && "top:50%; transform:translateY(-50%)" };
+` 
 
 const Overlay = styled.div`
   transition: opacity 0.35s, background-image 1.6s;
@@ -102,4 +107,10 @@ const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+`
+
+const FullscreenButtonContainer = styled.div`
+  position: absolute;
+  bottom: ${ dist.spacer };
+  left: ${ dist.spacer };
 `
