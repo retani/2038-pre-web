@@ -2,15 +2,32 @@ import React, { useState } from 'react'
 import Vimeo from '@u-wave/react-vimeo'
 import styled from 'styled-components'
 import Fullscreen from "react-full-screen";
+import debounce from 'debounce'
 
 import { dist, colors } from '../config/styles'
 import ButtonLarge from './ButtonLarge'
+
+
+let timeoutHandler = null
 
 const MainVideo = ({vimeoId}) => { 
   const [loaded, setLoaded] = useState(false);
   const [shouldPlay, setShouldPlay] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
+  const [overlay, setOverlay] = useState(false);
+
+  const mouseMove = () => {
+    setOverlay(true)
+    if (timeoutHandler) {
+      clearTimeout(timeoutHandler)
+    }
+    timeoutHandler = setTimeout(()=>setOverlay(false),700)
+  }
+
+  const triggerPlay = debounce(() => {
+    (playing === shouldPlay) && setShouldPlay(!shouldPlay)
+  }, 200)
 
   return <Container>
     <Fullscreen
@@ -32,11 +49,11 @@ const MainVideo = ({vimeoId}) => {
       />
       {/*shouldPlay && "shouldPlay"}
       {playing && "playing"*/}
-      <Overlay playing={shouldPlay}>
+      <Overlay show={overlay || !playing} onMouseMove={mouseMove} onTouchStart={triggerPlay}>
         <ButtonContainer>
           { loaded &&
             <ButtonLarge style={{color: (!playing && shouldPlay ? colors.blue : null)}}
-                  onClick={ () => (playing === shouldPlay) && setShouldPlay(!shouldPlay) }
+                  onClick={ triggerPlay }
                 >
               { playing ? "STOP" : "PLAY"}
             </ButtonLarge>
@@ -66,10 +83,7 @@ const Container = styled.div`
 
 const Overlay = styled.div`
   transition: opacity 0.35s, background-image 1.6s;
-  opacity: ${ props => props.playing ? 0 : 1};
-  &:hover {
-    opacity: 1;
-  }
+  opacity: ${ props => props.show ? 1 : 0};
   position: absolute;
   height: 100%;
   width: 100%;
