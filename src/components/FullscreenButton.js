@@ -27,7 +27,7 @@ export default ({onClick, style, isOn=false}) => {
 }
 
 const Container = styled.div`
-  display: inline-block;
+  display: block;
   width:40px;
   height: 40px;
   position: relative;
@@ -35,12 +35,16 @@ const Container = styled.div`
   color: white;
   * { 
     transition: all 0.15s;
-  }
-  &:hover * {
-    cursor: pointer;
     opacity: 0.8;
     path {
       opacity: 0.5;
+    }    
+  }
+  &:hover * {
+    cursor: pointer;
+    opacity: 1;
+    path {
+      opacity: 1;
     }
   }
 `

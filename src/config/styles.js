@@ -2,7 +2,7 @@ const metrics = {
   large: {
     fontSizePx: 30,
     lineHeightPx: 32,
-    lineTopPx: 7,
+    lineTopPx: 5,
   },
   small: {
     fontSizePx: 20,
@@ -28,16 +28,38 @@ const colors = {
 const snippets = {
   typography: {
     topAdjust: `
-    position: relative;
+      position: relative;
       margin-top: ${-2*metrics.large.lineTopPx + "px"};
       top: ${metrics.large.lineTopPx + "px"};
       @media ${ breakpoints.small } {
         margin-top: ${-2*metrics.small.lineTopPx + "px"};
         top: ${metrics.small.lineTopPx + "px"};
       }
+    `,
+    underline: `
+      text-decoration: none;
+      background-size: 1px 1em;
+      display: inline;
+      box-shadow:
+        inset 0px -0.1em ${colors.bg},
+        inset 0 -0.2em #000;
     `
   }
 }
+
+/*
+  border-style: solid;
+  border-color: black;
+  border-width: 0 0 1px 0;
+  padding-bottom: -1px;
+*/
+
+/*
+  background-size: 1px 1em;
+  box-shadow:
+    inset 0 -0.1em black,
+    inset 0 -0.2em ${colors.bg};
+*/
 
 const globalStyles = `
   @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:500&display=swap');

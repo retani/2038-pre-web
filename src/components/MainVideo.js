@@ -112,5 +112,5 @@ const ButtonContainer = styled.div`
 const FullscreenButtonContainer = styled.div`
   position: absolute;
   bottom: ${ dist.spacer };
-  left: ${ dist.spacer };
+  right: ${ dist.spacer };
 `

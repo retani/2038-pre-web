@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'components/Router'
 
 import { dist, snippets } from '../config/styles'
  
@@ -44,10 +45,25 @@ const dd = styled.dd`
   padding-left: 1rem;
 `
 
+const em = styled.em`
+  ${snippets.typography.underline};
+`
+
+const a = styled.a`
+  ${snippets.typography.underline};
+`
+
+const StyledLink = styled(Link)`
+  ${snippets.typography.underline};
+`
+
 export {
   p,
+  a,
   table,
   dl,
   dd,
-  dt
+  dt,
+  em,
+  StyledLink
 }

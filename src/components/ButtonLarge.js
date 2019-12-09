@@ -24,19 +24,23 @@ const Container = styled.div`
   color: white;
   * { 
     transition: all 0.15s;
-  }
-  &:hover * {
-    cursor: pointer;
     opacity: 0.8;
     path {
       opacity: 0.5;
+    }      
+  }
+  &:hover * {
+    cursor: pointer;
+    opacity: 1;
+    path {
+      opacity: 0.95;
     }
   }
 `
 
 const Text = styled.div`
   position: absolute;
-  top:0;
+  top:-2px; // center text tweak
   width: 100%;
   height: 100%;
   text-align:center;
