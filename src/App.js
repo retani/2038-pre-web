@@ -8,7 +8,7 @@ import Dynamic from 'containers/Dynamic'
 import { globalStyles } from './config/styles'
 
 import MainVideo from 'components/MainVideo'
-import { p, table, dl, dd, dt, em, a, StyledLink as Link } from 'components/HtmlElements'
+import { p, table, dl, dd, dt, em, a, ul, li, StyledLink as Link } from 'components/HtmlElements'
 import Spacer from 'components/Spacer'
 import Button from 'components/Button'
 import Ical from 'components/iCal'
@@ -26,7 +26,7 @@ function App() {
       <GlobalStyle />
       <div className="content">
         <React.Suspense fallback={<em>&nbsp;</em>}>
-          <MDXProvider components={{ MainVideo, em, a, p, table, Spacer, Link, dl, dd, dt, Spacer, Button, iCal: Ical }}>
+          <MDXProvider components={{ MainVideo, em, a, p, table, Spacer, Link, dl, dd, dt, ul, li, Spacer, Button, iCal: Ical }}>
             <Router>
               <Dynamic path="dynamic" />
               <Routes path="*" />

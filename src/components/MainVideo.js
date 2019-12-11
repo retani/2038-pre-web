@@ -46,6 +46,7 @@ const MainVideo = ({vimeoId}) => {
         id="player"
         paused={!shouldPlay}
         controls={false}
+        volume={1}
         onPlay={ () => setPlaying(true) }
         onPause={ () => setPlaying(false) }
         onEnd={ () => {setPlaying(false); setShouldPlay(false)} }

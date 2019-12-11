@@ -49,6 +49,17 @@ const em = styled.em`
   ${snippets.typography.underline};
 `
 
+const ul = styled.ul`
+  ${blockStyle};
+`
+
+const li = styled.li`
+  &::before {
+    content: "- ";
+  }
+  text-indent: 1em;
+`
+
 const a = styled.a`
   ${snippets.typography.underline};
 `
@@ -65,5 +76,7 @@ export {
   dd,
   dt,
   em,
+  ul,
+  li,
   StyledLink
 }
