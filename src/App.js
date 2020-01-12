@@ -12,6 +12,7 @@ import { p, table, dl, dd, dt, em, a, ul, li, StyledLink as Link } from 'compone
 import Spacer from 'components/Spacer'
 import Button from 'components/Button'
 import Ical from 'components/iCal'
+import Accordion from 'components/Accordion'
 
 import 'reset-css';
 
@@ -26,7 +27,7 @@ function App() {
       <GlobalStyle />
       <div className="content">
         <React.Suspense fallback={<em>&nbsp;</em>}>
-          <MDXProvider components={{ MainVideo, em, a, p, table, Spacer, Link, dl, dd, dt, ul, li, Spacer, Button, iCal: Ical }}>
+          <MDXProvider components={{ MainVideo, em, a, p, table, Spacer, Link, dl, dd, dt, ul, li, Spacer, Button, iCal: Ical, Accordion }}>
             <Router>
               <Dynamic path="dynamic" />
               <Routes path="*" />

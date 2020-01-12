@@ -8,6 +8,11 @@ const blockStyle = `
   margin-bottom: ${dist.spacer};
   margin-left: ${ dist.spacer };
   margin-right: ${ dist.spacer };
+  white-space: pre-wrap;
+`
+
+const BlockStyleDiv = styled.div`
+  ${blockStyle}
 `
 
 const p = styled.p`
@@ -42,7 +47,7 @@ const dt = styled.dt`
 const dd = styled.dd`
   // white-space: nowrap;
   float: left;
-  padding-left: 1rem;
+  padding-left: ${dist.letterWidth};
 `
 
 const em = styled.em`
@@ -78,5 +83,6 @@ export {
   em,
   ul,
   li,
-  StyledLink
+  StyledLink,
+  BlockStyleDiv
 }

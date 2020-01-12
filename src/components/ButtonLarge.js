@@ -45,7 +45,7 @@ const Text = styled.div`
   height: 100%;
   text-align:center;
   line-height: 88px;
-  font-size: ${ 1.8 * metrics.large.fontSizePx }px;
+  font-size: ${ metrics.veryLarge.fontSizePx }px;
   user-select: none;
 `
 

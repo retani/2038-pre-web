@@ -1,4 +1,7 @@
 const metrics = {
+  veryLarge: {
+    fontSizePx: 30 * 1.8,
+  },
   large: {
     fontSizePx: 30,
     lineHeightPx: 32,
@@ -18,11 +21,14 @@ const breakpoints = {
 const dist = {
   lineTop: -metrics.large.lineTopPx + "px",
   spacer: "40px",
+  letterWidth: "0.65rem",
 }
 
 const colors = {
   bg: "#D8D8D8",
-  blue: "#0000ff"
+  blue: "#0000ff",
+  turquoise: "rgb(117,251,253)",
+  white: "white",
 }
 
 const snippets = {
@@ -62,7 +68,7 @@ const snippets = {
 */
 
 const globalStyles = `
-  @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:500&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400&display=swap');
 
   :root {
     font-size: ${ metrics.large.fontSizePx }px;
