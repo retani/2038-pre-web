@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import { colors, snippets, dist, metrics } from '../config/styles'
-import { p as P } from './HtmlElements'
 
 export default ({children, head}) =>  {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +40,6 @@ const Head = styled.h2`
 const HeadText = styled.span`
   display: inline-block;
   height: 100%;
-  text-transform: uppercase;
   padding-left: ${ dist.letterWidth };
   padding-right: ${ dist.letterWidth };
   background-color: ${ ({isOpen}) => isOpen ? colors.white : colors.blue };
