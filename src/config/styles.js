@@ -1,6 +1,6 @@
 const metrics = {
   veryLarge: {
-    fontSizePx: 30 * 1.8,
+    fontSizePx: 30 * 1.25,
   },
   large: {
     fontSizePx: 30,
@@ -21,7 +21,8 @@ const breakpoints = {
 const dist = {
   lineTop: -metrics.large.lineTopPx + "px",
   spacer: "40px",
-  letterWidth: "0.65rem",
+  largeButtonHeight: "60px",
+  letterWidth: "0.65em",
 }
 
 const colors = {
