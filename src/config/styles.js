@@ -22,6 +22,7 @@ const dist = {
   lineTop: -metrics.large.lineTopPx + "px",
   spacer: "40px",
   largeButtonHeight: "60px",
+  smallButtonHeight: "30px",
   letterWidth: "0.65em",
 }
 
@@ -69,7 +70,7 @@ const snippets = {
 */
 
 const globalStyles = `
-  @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,500&display=swap');
 
   :root {
     font-size: ${ metrics.large.fontSizePx }px;

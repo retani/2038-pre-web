@@ -44,13 +44,13 @@ export default ({children, dateUTC}) =>  {
     return( () => clearInterval(handler))
   }, [])
 
-  return <Div><Accordion head={dateOffsetString}>
+  return <Div><Accordion head={dateOffsetString} contentStyle={{paddingTop:"22px"}}>
       {children}
   </Accordion></Div>
 }
 
 const Div = styled.div`
-  * {
+  > * > *, h2 span {
     background-color: ${colors.turquoise};
     color: black;
   };

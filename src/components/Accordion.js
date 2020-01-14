@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import { colors, snippets, dist, metrics } from '../config/styles'
+import { colors, dist, metrics } from '../config/styles'
 
-export default ({children, head}) =>  {
+export default ({children, head, contentStyle}) =>  {
   const [isOpen, setIsOpen] = useState(false);
 
   return <Container>
@@ -12,7 +12,7 @@ export default ({children, head}) =>  {
         {head}
       </HeadText>
     </Head>
-    <Content isOpen={isOpen}>
+    <Content isOpen={isOpen} style={contentStyle}>
       {children}
     </Content>
   </Container>
@@ -44,6 +44,7 @@ const HeadText = styled.span`
   padding-right: ${ dist.letterWidth };
   background-color: ${ ({isOpen}) => isOpen ? colors.white : colors.blue };
   color: ${ ({isOpen}) => isOpen ? colors.blue : colors.white };
+  font-weight: 500;
 `
 
 const Content = styled.div`

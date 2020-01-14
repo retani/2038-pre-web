@@ -1,20 +1,23 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'components/Router'
 
 import ButtonSmall from './ButtonSmall'
 import { p as P } from './HtmlElements'
 
-export default ({children}) =>  {
+export default ({text}) =>  {
 
   return <Container>
-    <ButtonSmall invert textOffset="1px">
-      iCAL
-    </ButtonSmall>
+    <Link to="/imprint">
+      <ButtonSmall textOffset="3px">
+        { text }
+      </ButtonSmall>
+    </Link>
   </Container>
 }
 
 const Container = styled(P)`
   text-align: center;
-  letter-spacing: 0.02em;
 `
+
 

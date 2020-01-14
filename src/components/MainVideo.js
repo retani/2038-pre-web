@@ -23,7 +23,7 @@ const MainVideo = ({vimeoId}) => {
     if (timeoutHandler) {
       clearTimeout(timeoutHandler)
     }
-    timeoutHandler = setTimeout(()=>setOverlay(false),700)
+    timeoutHandler = setTimeout(()=>setOverlay(false),2000)
   },10)
 
   const triggerPlay = debounce(() => {
@@ -47,20 +47,22 @@ const MainVideo = ({vimeoId}) => {
         paused={!shouldPlay}
         controls={false}
         volume={1}
-        onPlay={ () => setPlaying(true) }
+        onPlay={ () => {setPlaying(true); setOverlay(false)} }
         onPause={ () => setPlaying(false) }
         onEnd={ () => {setPlaying(false); setShouldPlay(false)} }
         onError={ () => {setPlaying(false); setShouldPlay(false)} }
         onLoaded={ () => setLoaded(true)}
       />
       <Overlay show={overlay || !playing} onMouseMove={mouseMove} onTouchEnd={()=>playing&&triggerPlay}>
-        <ButtonContainer>
+        <ButtonContainer style={{mixBlendMode: "lighten"}}>
           { loaded &&
-            <ButtonLarge style={{color: (!playing && shouldPlay ? colors.blue : null)}}
-                  onClick={ triggerPlay }
-                >
-              { playing ? "STOP" : "PLAY"}
-            </ButtonLarge>
+            <div style={{opacity: (!overlay || !playing && shouldPlay ? "0" : "0.8" ), transition: "opacity 0.5s", mixBlendMode: "lighten" }}>
+              <ButtonLarge style={{mixBlendMode: "lighten"}}
+                    onClick={ triggerPlay }
+                  >
+                { playing ? "STOP" : "PLAY"}
+              </ButtonLarge>
+            </div>
           }
         </ButtonContainer>
         <FullscreenButtonContainer>
