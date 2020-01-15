@@ -35,9 +35,9 @@ const Container = styled.div`
   color: white;
   * { 
     transition: all 0.15s;
-    opacity: 0.8;
+    opacity: 1;
     path {
-      opacity: 0.5;
+      opacity: 1;
     }    
   }
   &:hover * {

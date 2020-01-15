@@ -3,9 +3,9 @@ import styled from 'styled-components'
 
 import { metrics, dist } from '../config/styles'
 
-export default ({children, onClick, style}) => {
+export default ({children, onClick, style, highlight}) => {
   return <Container onClick={onClick} style={style}>
-      {children}
+    {children}
   </Container>
 }
 
@@ -19,12 +19,7 @@ const Container = styled.div`
   color: black;
   font-size: ${ metrics.veryLarge.fontSizePx }px;
   line-height: ${ dist.largeButtonHeight };
-  mix-blend-mode: lighten;
+  mix-blend-mode: screen;
   transition: all 0.15s;
-  opacity: 0.65;
-  &:hover {
-    opacity: 0.8;
-    cursor: pointer;
-  }
+  opacity: ${ ({highlight}) => highlight ? 0.8 : 0.65 };
 `
-

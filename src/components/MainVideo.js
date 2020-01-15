@@ -17,6 +17,7 @@ const MainVideo = ({vimeoId}) => {
   const [playing, setPlaying] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
   const [overlay, setOverlay] = useState(false);
+  const [hover, setHover] = useState(false);
 
   const mouseMove = debounce(() => {
     setOverlay(true)
@@ -34,7 +35,11 @@ const MainVideo = ({vimeoId}) => {
       enabled={fullscreen}
       onChange={f => setFullscreen(f)}
     >
-    <Container isFullscreen={fullscreen}>
+    <Container 
+        isFullscreen={fullscreen} 
+        onMouseEnter={()=>setHover(true)} 
+        onMouseLeave={()=>setHover(false)}
+      >
       <Vimeo
         style={{
           position:"relative",
@@ -53,25 +58,24 @@ const MainVideo = ({vimeoId}) => {
         onError={ () => {setPlaying(false); setShouldPlay(false)} }
         onLoaded={ () => setLoaded(true)}
       />
-      <Overlay show={overlay || !playing} onMouseMove={mouseMove} onTouchEnd={()=>playing&&triggerPlay}>
-        <ButtonContainer style={{mixBlendMode: "lighten"}}>
+      <Overlay show={overlay || !playing} onClick={triggerPlay} style={{mixBlendMode: "screen"}}>
+        <ButtonContainer style={{mixBlendMode: "screen"}}>
           { loaded &&
-            <div style={{opacity: (!overlay || !playing && shouldPlay ? "0" : "0.8" ), transition: "opacity 0.5s", mixBlendMode: "lighten" }}>
-              <ButtonLarge style={{mixBlendMode: "lighten", fontWeight: "500"}}
-                    onClick={ triggerPlay }
+            <div style={{opacity: shouldPlay ? "0.6" : "0.8", transition: "opacity 1s", mixBlendMode: "screen" }}>
+              <ButtonLarge highlight={hover} style={{mixBlendMode: "screen", fontWeight: "500"}}
                   >
-                { playing ? "STOP" : "PLAY"}
+                { "PLAY"}
               </ButtonLarge>
             </div>
           }
         </ButtonContainer>
-        <FullscreenButtonContainer>
+      </Overlay>
+      <FullscreenButtonContainer>
           <FullscreenButton 
             onClick={ event => { setFullscreen(!fullscreen) } }
             isOn={fullscreen}
           />
         </FullscreenButtonContainer>
-      </Overlay>
     </Container>
   </Fullscreen>
 }
@@ -87,6 +91,7 @@ const Container = styled.div`
   background: rgba(0,0,0,0.1);
   position: relative;
   ${ props => props.isFullscreen && "top:50%; transform:translateY(-50%)" };
+  cursor: pointer;
 ` 
 
 const Overlay = styled.div`
