@@ -68,10 +68,15 @@ const li = styled.li`
 
 const a = styled.a`
   ${snippets.typography.underline};
+  word-break: break-all;
 `
 
 const StyledLink = styled(Link)`
   ${snippets.typography.underline};
+`
+
+const LargeSpacer = styled.div`
+  height: 66vh;
 `
 
 export {
@@ -85,5 +90,6 @@ export {
   ul,
   li,
   StyledLink,
+  LargeSpacer,
   BlockStyleDiv
 }

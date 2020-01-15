@@ -34,24 +34,43 @@ export default ({children, dateUTC}) =>  {
 
   const date = Date.UTC(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]), parseInt(parts[3]), parseInt(parts[4]))
 
-  const [dateOffsetString, setDateOffsetString] = useState("");
+  const [offset, setOffset] = useState(0);
   useEffect(() => {
     const handler = setInterval(() => {
       const nowUTC = Math.floor((new Date()).getTime())
-      const o = renderOffsetObject(date.valueOf() - nowUTC)
-      setDateOffsetString(`${o.days}d ${o.hours}h ${o.minutes}m`)
+      setOffset(date.valueOf() - nowUTC)
     }, 1000)
     return( () => clearInterval(handler))
   }, [])
 
-  return <Div><Accordion head={dateOffsetString} contentStyle={{paddingTop:"22px"}}>
+  const o = renderOffsetObject(offset)
+  const offsetText = offset > 0 ? 
+    <span>-{o.days}d
+      <span className="hours">&nbsp;{o.hours}h</span>
+      <span className="minutes">&nbsp;{o.minutes}m</span>
+    </span>
+    : `0d 0h 0m`
+
+  return <Div>
+    <Accordion head={offsetText} contentStyle={{paddingTop:"22px"}}>
       {children}
-  </Accordion></Div>
+    </Accordion>
+  </Div>
 }
 
 const Div = styled.div`
   > * > *, h2 span {
     background-color: ${colors.turquoise};
     color: black;
-  };
+  }
+  .hours {
+    @media (max-width: 425px) {
+      display: none;
+    }
+  }  
+  .minutes {
+    @media (max-width: 500px) {
+      display: none;
+    }
+  }
 `
