@@ -14,13 +14,15 @@ const numberTimes = {
 
 function renderOffsetObject(distance) {
   const { week, day, hour, minute, second } = numberTimes;
-  distance += minute
+  distance += second
   const hours = Math.floor((distance % day) / hour);
   const minutes = Math.floor((distance % hour) / minute);
+  const seconds = Math.floor((distance % minute) / second);
   return {
-    days: `${Math.floor(distance / day)}`,
+    days: `${Math.floor(distance / day)}`.padStart(3,"0"),
     hours: hours < 10 ? `0${hours}` : `${hours}`,
-    minutes: minutes < 10 ? `0${minutes}` : `${minutes}`
+    minutes: minutes < 10 ? `0${minutes}` : `${minutes}`,
+    seconds: seconds < 10 ? `0${seconds}` : `${seconds}`
   };
 }
 
@@ -40,29 +42,31 @@ export default ({children, dateUTC}) =>  {
       const nowUTC = Math.floor((new Date()).getTime())
       setOffset(date.valueOf() - nowUTC)
     }, 1000)
+    const nowUTC = Math.floor((new Date()).getTime())
+    setOffset(date.valueOf() - nowUTC)
     return( () => clearInterval(handler))
   }, [])
 
   const o = renderOffsetObject(offset)
-  const offsetText = offset > 0 ? 
-    <span>-{o.days}d
-      <span className="hours">&nbsp;{o.hours}h</span>
-      <span className="minutes">&nbsp;{o.minutes}m</span>
+  const offsetText = <span>-{offset < 0 ? 0 : o.days}d
+      <span className="hours">&nbsp;{offset < 0 ? 0 : o.hours}h</span>
+      <span className="minutes">&nbsp;{offset < 0 ? 0 : o.minutes}m</span>
+      <span className="seconds">&nbsp;{offset < 0 ? 0 : o.seconds}s</span>
     </span>
-    : `0d 0h 0m`
 
   return <Div>
-    <Accordion head={offsetText} contentStyle={{paddingTop:"22px"}}>
+    <Accordion 
+        head={offsetText} 
+        contentStyle={{paddingTop:"23px"}} 
+        backgroundColorClosed={colors.green} 
+        backgroundColorOpen={colors.turquoise}
+      >
       {children}
     </Accordion>
   </Div>
 }
 
 const Div = styled.div`
-  > * > *, h2 span {
-    background-color: ${colors.turquoise};
-    color: black;
-  }
   .hours {
     @media (max-width: 425px) {
       display: none;
@@ -73,4 +77,9 @@ const Div = styled.div`
       display: none;
     }
   }
+  .seconds {
+    @media (max-width: 575px) {
+      display: none;
+    }
+  }  
 `

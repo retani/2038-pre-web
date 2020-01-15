@@ -3,23 +3,44 @@ import styled from 'styled-components'
 
 import { colors, dist, metrics } from '../config/styles'
 
-export default ({children, head, contentStyle}) =>  {
+export default ({children, head, contentStyle, backgroundColorClosed, backgroundColorOpen}) =>  {
   const [isOpen, setIsOpen] = useState(false);
+  const [height, setHeight] = useState(0);
 
-  return <Container>
-    <Head isOpen={isOpen} onClick={()=>setIsOpen(!isOpen)}>
+  let innerContentElem = null
+  const backgroundColor = backgroundColorClosed && backgroundColorOpen ? ( isOpen ? backgroundColorOpen : backgroundColorClosed ) : null
+
+  const toggle = () => {
+    console.log(innerContentElem)
+    setHeight(!isOpen ? innerContentElem.scrollHeight : 0)
+    setIsOpen(!isOpen)
+  }
+
+  return <Container backgroundColor={backgroundColor}>
+    <Head isOpen={isOpen} onClick={toggle}>
       <HeadText isOpen={isOpen}>
         {head}
       </HeadText>
     </Head>
-    <Content isOpen={isOpen} style={contentStyle}>
-      {children}
+    <Content isOpen={isOpen} height={height}>
+      <InnerContent ref={elem => innerContentElem=elem} style={contentStyle}>
+        {children}
+      </InnerContent>
     </Content>
   </Container>
 }
 
 const Container = styled.div`
   margin-bottom: ${dist.spacer};
+  ${ ({backgroundColor}) => backgroundColor && `
+    &, > *, h2 span {
+      background-color: ${ backgroundColor } !important;
+      color: black;
+    }
+  `}
+  * {
+    transition: background-color 0.35s, height 0.7s;
+  }
 `
 
 const Head = styled.h2`
@@ -48,8 +69,13 @@ const HeadText = styled.span`
 `
 
 const Content = styled.div`
-  padding-top: ${dist.spacer};
+  /*padding-top: ${ ({isOpen}) => isOpen ? dist.spacer : "0" };*/
   overflow: hidden;
-  display: ${ ({isOpen}) => isOpen ? "block" : "none" };
+  height: ${ ({isOpen, height}) => isOpen ? height+"px" : "0" };
+  box-sizing: border-box;
   background-color: ${ colors.white };
+`
+
+const InnerContent = styled.div`
+  padding-top: ${ dist.spacer };
 `

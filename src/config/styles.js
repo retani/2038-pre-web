@@ -31,6 +31,7 @@ const colors = {
   blue: "#0000ff",
   turquoise: "rgb(117,251,253)",
   white: "white",
+  green: "#75FB4C",
 }
 
 const snippets = {
