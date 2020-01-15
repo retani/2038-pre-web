@@ -62,7 +62,8 @@ const li = styled.li`
   &::before {
     content: "- ";
   }
-  text-indent: 1em;
+  margin-left: calc( 2 * ${ dist.letterWidth} );
+  text-indent: calc( -2 * ${ dist.letterWidth} );
 `
 
 const a = styled.a`
