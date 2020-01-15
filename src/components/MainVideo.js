@@ -57,7 +57,7 @@ const MainVideo = ({vimeoId}) => {
         <ButtonContainer style={{mixBlendMode: "lighten"}}>
           { loaded &&
             <div style={{opacity: (!overlay || !playing && shouldPlay ? "0" : "0.8" ), transition: "opacity 0.5s", mixBlendMode: "lighten" }}>
-              <ButtonLarge style={{mixBlendMode: "lighten"}}
+              <ButtonLarge style={{mixBlendMode: "lighten", fontWeight: "500"}}
                     onClick={ triggerPlay }
                   >
                 { playing ? "STOP" : "PLAY"}
