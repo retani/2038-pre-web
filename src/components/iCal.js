@@ -7,9 +7,11 @@ import { p as P } from './HtmlElements'
 export default ({children}) =>  {
 
   return <Container>
-    <ButtonSmall invert textOffset="1px">
-      iCAL
-    </ButtonSmall>
+    <a href="/2038-press-briefing.ics" download>
+      <ButtonSmall invert textOffset="1px">
+        iCAL
+      </ButtonSmall>
+    </a>
   </Container>
 }
 
