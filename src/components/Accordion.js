@@ -11,7 +11,7 @@ export default ({children, head, contentStyle, backgroundColorClosed, background
   const backgroundColor = backgroundColorClosed && backgroundColorOpen ? ( isOpen ? backgroundColorOpen : backgroundColorClosed ) : null
 
   const toggle = () => {
-    setHeight(!isOpen ? innerContentElem.scrollHeight : 0)
+    setHeight(!isOpen ? innerContentElem.innerHeight : 0)
     setIsOpen(!isOpen)
   }
 
