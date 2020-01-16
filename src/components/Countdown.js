@@ -68,6 +68,7 @@ export default ({children, dateUTC}) =>  {
 }
 
 const Div = styled.div`
+  overflow: hidden;
   .hours {
     @media (max-width: 425px) {
       display: none;

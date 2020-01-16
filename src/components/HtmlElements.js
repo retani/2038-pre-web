@@ -5,7 +5,7 @@ import { dist, snippets } from '../config/styles'
  
 const blockStyle = `
   ${snippets.typography.topAdjust};
-  margin-bottom: ${dist.spacer};
+  padding-bottom: ${dist.spacer};
   margin-left: ${ dist.spacer };
   margin-right: ${ dist.spacer };
   white-space: pre-wrap;

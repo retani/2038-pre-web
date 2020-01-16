@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 import { colors, dist, metrics } from '../config/styles'
+import Spacer from './Spacer'
 
 export default ({children, head, contentStyle, backgroundColorClosed, backgroundColorOpen, style}) =>  {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +12,7 @@ export default ({children, head, contentStyle, backgroundColorClosed, background
   const backgroundColor = backgroundColorClosed && backgroundColorOpen ? ( isOpen ? backgroundColorOpen : backgroundColorClosed ) : null
 
   const toggle = () => {
-    setHeight(!isOpen ? innerContentElem.clientHeight + parseInt(dist.spacer) + "px" : 0)
+    setHeight(!isOpen ? innerContentElem.clientHeight + "px" : 0)
     setIsOpen(!isOpen)
   }
 
