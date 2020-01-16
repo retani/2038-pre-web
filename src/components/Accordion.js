@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 import { colors, dist, metrics } from '../config/styles'
 
-export default ({children, head, contentStyle, backgroundColorClosed, backgroundColorOpen}) =>  {
+export default ({children, head, contentStyle, backgroundColorClosed, backgroundColorOpen, style}) =>  {
   const [isOpen, setIsOpen] = useState(false);
   const [height, setHeight] = useState(0);
 
@@ -11,17 +11,28 @@ export default ({children, head, contentStyle, backgroundColorClosed, background
   const backgroundColor = backgroundColorClosed && backgroundColorOpen ? ( isOpen ? backgroundColorOpen : backgroundColorClosed ) : null
 
   const toggle = () => {
-    setHeight(!isOpen ? innerContentElem.innerHeight : 0)
+    setHeight(!isOpen ? innerContentElem.clientHeight + parseInt(dist.spacer) + "px" : 0)
     setIsOpen(!isOpen)
   }
 
-  return <Container backgroundColor={backgroundColor}>
+  const updateDimensions = () => {
+    if (isOpen) {
+      setHeight("auto")
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", updateDimensions);
+    return( () => window.removeEventListener("resize", updateDimensions))
+  }, [updateDimensions])
+
+  return <Container backgroundColor={backgroundColor} style={style}>
     <Head isOpen={isOpen} onClick={toggle}>
       <HeadText isOpen={isOpen}>
         {head}
       </HeadText>
     </Head>
-    <Content isOpen={isOpen} height={height}>
+    <Content isOpen={isOpen} height={height} onanimationend={()=>console.log("end")}>
       <InnerContent ref={elem => innerContentElem=elem} style={contentStyle}>
         {children}
       </InnerContent>
@@ -68,9 +79,8 @@ const HeadText = styled.span`
 `
 
 const Content = styled.div`
-  /*padding-top: ${ ({isOpen}) => isOpen ? dist.spacer : "0" };*/
   overflow: hidden;
-  height: ${ ({isOpen, height}) => isOpen ? height+"px" : "0" };
+  height: ${ ({height}) => height };
   box-sizing: border-box;
   background-color: ${ colors.white };
 `

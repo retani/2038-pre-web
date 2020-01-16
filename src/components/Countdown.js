@@ -58,6 +58,7 @@ export default ({children, dateUTC}) =>  {
     <Accordion 
         head={offsetText} 
         contentStyle={{paddingTop:"23px"}} 
+        style={{marginBottom:0}}
         backgroundColorClosed={colors.green} 
         backgroundColorOpen={colors.turquoise}
       >
