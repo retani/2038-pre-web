@@ -29,9 +29,9 @@ const dist = {
 const colors = {
   bg: "#D8D8D8",
   blue: "#0000ff",
-  turquoise: "rgb(117,251,253)",
+  turquoise: "#00ffff",
   white: "white",
-  green: "#75FB4C",
+  green: "#00ff00",
 }
 
 const snippets = {
