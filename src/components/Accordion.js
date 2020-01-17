@@ -13,7 +13,7 @@ export default ({children, head, contentStyle, backgroundColorClosed, background
 
   const toggle = () => {
     setHeight(!isOpen ? innerContentElem.clientHeight + "px" : 0)
-    setIsOpen(!isOpen)
+    setIsOpen(!isOpen, )
   }
 
   const updateDimensions = () => {
@@ -50,7 +50,7 @@ const Container = styled.div`
     }
   `}
   * {
-    transition: background-color 0.35s, height 0.7s;
+    transition: background-color 0.35s, height 0.6s;
   }
 `
 
@@ -83,9 +83,7 @@ const Content = styled.div`
   overflow: hidden;
   height: ${ ({height}) => height };
   box-sizing: border-box;
-  background-color: ${ colors.white };
 `
 
 const InnerContent = styled.div`
-  padding-top: ${ dist.spacer };
 `

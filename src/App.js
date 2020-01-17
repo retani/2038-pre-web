@@ -15,6 +15,7 @@ import Ical from 'components/iCal'
 import Accordion from 'components/Accordion'
 import Countdown from 'components/Countdown'
 import ImpLink from 'components/ImpLink'
+import Document from 'components/Document'
 
 import 'reset-css';
 
@@ -29,7 +30,7 @@ function App() {
       <GlobalStyle />
       <div className="content">
         <React.Suspense fallback={<em>&nbsp;</em>}>
-          <MDXProvider components={{ MainVideo, em, a, p, table, Spacer, Link, dl, dd, dt, ul, li, Spacer, LargeSpacer, Button, iCal: Ical, Accordion, Countdown, ImpLink }}>
+          <MDXProvider components={{ MainVideo, em, a, p, table, Spacer, Link, dl, dd, dt, ul, li, Spacer, LargeSpacer, Button, iCal: Ical, Accordion, Countdown, ImpLink, Document }}>
             <Router>
               <Dynamic path="dynamic" />
               <Routes path="*" />

@@ -7,6 +7,11 @@ const metrics = {
     lineHeightPx: 32,
     lineTopPx: 5,
   },
+  medium: {
+    fontSizePx: 26, // 20pt
+    lineHeightPx: 32, // 24pt
+    lineTopPx: 5,
+  },
   small: {
     fontSizePx: 20,
     lineHeightPx: 22,

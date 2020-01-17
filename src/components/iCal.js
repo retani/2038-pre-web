@@ -8,7 +8,7 @@ export default ({children}) =>  {
 
   return <Container>
     <a href="/2038-press-briefing.ics" download>
-      <ButtonSmall invert textOffset="1px">
+      <ButtonSmall textOffset="1px">
         iCAL
       </ButtonSmall>
     </a>
