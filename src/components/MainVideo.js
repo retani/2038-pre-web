@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Vimeo from '@u-wave/react-vimeo'
 import styled from 'styled-components'
 import Fullscreen from "react-full-screen";
+import fscreen from 'fscreen';
 import debounce from 'debounce'
 
 import { dist, colors } from '../config/styles'
@@ -70,12 +71,14 @@ const MainVideo = ({vimeoId}) => {
           }
         </ButtonContainer>
       </Overlay>
-      <FullscreenButtonContainer>
+      { fscreen.fullscreenEnabled &&
+        <FullscreenButtonContainer>
           <FullscreenButton 
             onClick={ event => { setFullscreen(!fullscreen) } }
             isOn={fullscreen}
           />
         </FullscreenButtonContainer>
+      }
     </Container>
   </Fullscreen>
 }
