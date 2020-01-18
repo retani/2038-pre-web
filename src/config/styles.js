@@ -80,20 +80,19 @@ const snippets = {
 const globalStyles = `
   /* NOTE: font import in App.js */
 
-  /*
-    @font-face {
-      font-family: "Roboto Mono";
-      src: url("/RobotoMono-Regular.ttf");
-      font-weight: 400;
-    }
+  @font-face {
+    font-family: "Roboto Mono";
+    src: url("/RobotoMono-Regular.woff2") format("woff2"),
+    url("/RobotoMono-Regular.ttf") format("ttf");
+    font-weight: 400;
+  }
 
-    @font-face {
-      font-family: "Roboto Mono";
-      src: url("/RobotoMono-Medium.ttf");
-      font-weight: 500;
-    } 
-  */
-  
+  @font-face {
+    font-family: "Roboto Mono";
+    src: url("/RobotoMono-Medium.ttf") format("woff2"),
+    url("/RobotoMono-Medium.ttf") format("ttf");
+    font-weight: 500;
+  }   
 
   :root {
     font-size: ${ metrics.large.fontSizePx }px;
@@ -115,7 +114,7 @@ const globalStyles = `
     @media ${ breakpoints.small } {
       line-height: ${ metrics.medium.lineHeightPx }px;
     }    
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Roboto Mono', 'Andale Mono', monospace;
   }
 `
 

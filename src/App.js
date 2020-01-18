@@ -1,5 +1,5 @@
 import React from 'react'
-import { Root, Routes } from 'react-static'
+import { Root, Routes, Head } from 'react-static'
 import { MDXProvider } from '@mdx-js/react'
 import styled, {createGlobalStyle} from 'styled-components'
 
@@ -28,9 +28,12 @@ const GlobalStyle = createGlobalStyle`${globalStyles}`
 function App() {
   return (
     <Root>
-      <style>
-        @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,500&display=fallback&subset=latin-ext');
-      </style>
+      <Head>
+        <title>2038</title>
+        {/*<style>
+          @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,500&display=swap&subset=latin-ext');
+        </style>*/}
+      </Head>
       <GlobalStyle />
       <div className="content">
         <React.Suspense fallback={<em>&nbsp;</em>}>
