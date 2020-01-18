@@ -97,7 +97,7 @@ const globalStyles = `
     letter-spacing: 1px;
 
     @media ${ breakpoints.small } {
-      font-size: ${ metrics.small.fontSizePx }px;
+      font-size: ${ metrics.medium.fontSizePx }px;
     }
 
     background-color: ${ colors.bg };
@@ -110,7 +110,7 @@ const globalStyles = `
   body {
     line-height: ${ metrics.large.lineHeightPx }px;
     @media ${ breakpoints.small } {
-      line-height: ${ metrics.small.lineHeightPx }px;
+      line-height: ${ metrics.medium.lineHeightPx }px;
     }    
     font-family: 'Roboto Mono', monospace;
   }
