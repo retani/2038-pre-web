@@ -36,7 +36,7 @@ function App() {
       </Head>
       <GlobalStyle />
       <div className="content">
-        <React.Suspense fallback={<em>&nbsp;</em>}>
+        <React.Suspense fallback={<Loading />}>
           <MDXProvider components={{ MainVideo, em, a, p, table, Spacer, Link, dl, dd, dt, ul, li, br, Spacer, LargeSpacer, Button, iCal: Ical, Accordion, Countdown, ImpLink, Document, Logos }}>
             <Router>
               <Dynamic path="dynamic" />
@@ -50,3 +50,11 @@ function App() {
 }
 
 export default App
+
+const Loading = styled.div`
+  width: 100%;
+  background: rgba(0,0,0,0.1);
+  opacity: 0.8;
+  height: 0;
+  padding-bottom: 56.25%;
+`
