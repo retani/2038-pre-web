@@ -78,19 +78,22 @@ const snippets = {
 */
 
 const globalStyles = `
-  @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,500&display=swap');
+  /* NOTE: font import in App.js */
 
-  @font-face {
-    font-family: "Roboto Mono";
-    src: url("/RobotoMono-Regular.ttf");
-    font-weight: 400;
-  }
+  /*
+    @font-face {
+      font-family: "Roboto Mono";
+      src: url("/RobotoMono-Regular.ttf");
+      font-weight: 400;
+    }
 
-  @font-face {
-    font-family: "Roboto Mono";
-    src: url("/RobotoMono-Medium.ttf");
-    font-weight: 500;
-  }  
+    @font-face {
+      font-family: "Roboto Mono";
+      src: url("/RobotoMono-Medium.ttf");
+      font-weight: 500;
+    } 
+  */
+  
 
   :root {
     font-size: ${ metrics.large.fontSizePx }px;

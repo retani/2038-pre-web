@@ -28,6 +28,9 @@ const GlobalStyle = createGlobalStyle`${globalStyles}`
 function App() {
   return (
     <Root>
+      <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,500&display=fallback&subset=latin-ext');
+      </style>
       <GlobalStyle />
       <div className="content">
         <React.Suspense fallback={<em>&nbsp;</em>}>
