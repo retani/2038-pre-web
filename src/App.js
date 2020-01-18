@@ -4,11 +4,10 @@ import { MDXProvider } from '@mdx-js/react'
 import styled, {createGlobalStyle} from 'styled-components'
 
 import { Router } from 'components/Router'
-import Dynamic from 'containers/Dynamic'
 import { globalStyles } from './config/styles'
 
 import MainVideo from 'components/MainVideo'
-import { p, table, dl, dd, dt, em, a, ul, li, br, LargeSpacer, StyledLink as Link } from 'components/HtmlElements'
+import { p, table, dl, dd, dt, em, a, ul, li, br, LargeSpacer, ScrollTop, StyledLink as Link } from 'components/HtmlElements'
 import Spacer from 'components/Spacer'
 import Button from 'components/Button'
 import Ical from 'components/iCal'
@@ -37,9 +36,8 @@ function App() {
       <GlobalStyle />
       <div className="content">
         <React.Suspense fallback={<Loading />}>
-          <MDXProvider components={{ MainVideo, em, a, p, table, Spacer, Link, dl, dd, dt, ul, li, br, Spacer, LargeSpacer, Button, iCal: Ical, Accordion, Countdown, ImpLink, Document, Logos }}>
+          <MDXProvider components={{ MainVideo, em, a, p, table, Spacer, Link, dl, dd, dt, ul, li, br, Spacer, LargeSpacer, Button, iCal: Ical, Accordion, Countdown, ImpLink, Document, Logos, ScrollTop }}>
             <Router>
-              <Dynamic path="dynamic" />
               <Routes path="*" />
             </Router>
           </MDXProvider>
