@@ -92,11 +92,6 @@ const LargeSpacer = styled.div`
   height: 180px;
 `
 
-const ScrollTop = () => {
-  window.scrollTo(0,0);
-  return null
-}
-
 export {
   p,
   a,
@@ -110,6 +105,5 @@ export {
   br,
   StyledLink,
   LargeSpacer,
-  BlockStyleDiv,
-  ScrollTop
+  BlockStyleDiv
 }
