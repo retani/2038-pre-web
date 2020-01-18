@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
-import { colors } from '../config/styles'
+import { colors, breakpoints, metrics } from '../config/styles'
 import Accordion from './Accordion'
 
 const numberTimes = {
@@ -32,7 +32,17 @@ export default ({children, dateUTC}) =>  {
     return <span>Format: YYYY-mm-dd-HH-MM (given: {dateUTC} ?)</span>
   }
 
-  
+  const [vw, setVw] = useState(0)
+
+  const updateDimensions = () => {
+      setVw(window.innerWidth)
+  }
+
+  useEffect(() => {
+    updateDimensions()
+    window.addEventListener("resize", updateDimensions);
+    return( () => window.removeEventListener("resize", updateDimensions))
+  }, [updateDimensions])
 
   const date = Date.UTC(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]), parseInt(parts[3]), parseInt(parts[4]))
 
@@ -48,11 +58,13 @@ export default ({children, dateUTC}) =>  {
   }, [])
 
   const o = renderOffsetObject(offset)
-  const offsetText = <span>-{offset < 0 ? 0 : o.days}d
-      <span className="hours">&nbsp;{offset < 0 ? 0 : o.hours}h</span>
-      <span className="minutes">&nbsp;{offset < 0 ? 0 : o.minutes}m</span>
-      <span className="seconds">&nbsp;{offset < 0 ? 0 : o.seconds}s</span>
-    </span>
+  const small = vw <= breakpoints.smallPx
+  const offsetText = <Text>
+      <span>-{offset < 0 ? 0 : o.days}{!small ? "d " : ":"}</span>
+      <span>{offset < 0 ? 0 : o.hours}{!small ? "h " : ":"}</span>
+      <span className="minutes">{offset < 0 ? 0 : o.minutes}{!small ? "h " : ":"}</span>
+      <span className="seconds">{offset < 0 ? 0 : o.seconds}{!small ? "s" : ""}</span>
+    </Text>
 
   return <Div>
     <Accordion 
@@ -63,12 +75,13 @@ export default ({children, dateUTC}) =>  {
         backgroundColorOpen={colors.turquoise}
       >
       {children}
+
     </Accordion>
   </Div>
 }
 
 const Div = styled.div`
-  overflow: hidden;
+/*  overflow: hidden;
   .hours {
     @media (max-width: 425px) {
       display: none;
@@ -83,5 +96,13 @@ const Div = styled.div`
     @media (max-width: 575px) {
       display: none;
     }
-  }  
+  }*/
+`
+
+const Text = styled.span`
+  @media ${ breakpoints.small } {
+    font-size: ${ 25 }px;
+    top: -4px;
+    position: relative;
+  }
 `

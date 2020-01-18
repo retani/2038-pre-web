@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { dist, colors, metrics } from '../config/styles'
+import { dist, colors, metrics, breakpoints } from '../config/styles'
 
 export default ({children}) =>  <Center>
     <Container>
@@ -11,10 +11,13 @@ export default ({children}) =>  <Center>
 
 const Container = styled.div`
   background-color: ${ colors.white };
-  max-width: 1060px;
-  font-size: ${ metrics.medium.fontSizePx }px;
-  line-height: ${ metrics.medium.lineHeightPx }px;
-  @media (min-width: 800px) {
+  max-width: 360px;
+  font-size: ${ metrics.small.fontSizePx }px;
+  line-height: ${ metrics.small.lineHeightPx }px;
+  @media (min-width: ${breakpoints.smallPx+1}px) {
+    font-size: ${ metrics.medium.fontSizePx }px;
+    line-height: ${ metrics.medium.lineHeightPx }px;
+    max-width: 1060px;
     margin-left: 120px;
     margin-right: 120px;
     padding-left: 10px;

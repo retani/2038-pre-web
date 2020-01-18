@@ -5,7 +5,7 @@ import Fullscreen from "react-full-screen";
 import fscreen from 'fscreen';
 import debounce from 'debounce'
 
-import { dist, colors } from '../config/styles'
+import { dist, colors, breakpoints } from '../config/styles'
 import ButtonLarge from './ButtonLarge'
 import FullscreenButton from './FullscreenButton'
 
@@ -87,6 +87,9 @@ export default MainVideo
 
 const Container = styled.div`
   margin-bottom: ${dist.spacer};
+  @media ${ breakpoints.small } {
+    margin-bottom: ${dist.smallSpacer};
+  }
   box-sizing: content-box;
   width: 100%;
   height: 0;
@@ -103,7 +106,7 @@ const Overlay = styled.div`
   position: absolute;
   height: 100%;
   width: 100%;
-  background-image: linear-gradient(0deg, ${colors.bg}77 0%, ${colors.bg}00 25%);
+  /*background-image: linear-gradient(0deg, ${colors.bg}77 0%, ${colors.bg}00 25%);*/
   top: 0;
   left:0;
   display: flex;
@@ -124,4 +127,8 @@ const FullscreenButtonContainer = styled.div`
   position: absolute;
   bottom: ${ dist.spacer };
   right: ${ dist.spacer };
+  @media ${ breakpoints.small } {
+    bottom: ${ dist.smallSpacer };
+    right: ${ dist.smallSpacer };    
+  }
 `

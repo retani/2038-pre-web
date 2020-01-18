@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
-import { colors, dist, metrics } from '../config/styles'
+import { colors, dist, metrics, breakpoints } from '../config/styles'
 import Spacer from './Spacer'
 
 export default ({children, head, contentStyle, backgroundColorClosed, backgroundColorOpen, style}) =>  {
@@ -33,7 +33,7 @@ export default ({children, head, contentStyle, backgroundColorClosed, background
         {head}
       </HeadText>
     </Head>
-    <Content isOpen={isOpen} height={height} onanimationend={()=>console.log("end")}>
+    <Content isOpen={isOpen} height={height}>
       <InnerContent ref={elem => innerContentElem=elem} style={contentStyle}>
         {children}
       </InnerContent>
@@ -43,6 +43,9 @@ export default ({children, head, contentStyle, backgroundColorClosed, background
 
 const Container = styled.div`
   margin-bottom: ${dist.spacer};
+  @media ${ breakpoints.small } {
+    margin-bottom: ${dist.smallSpacer};
+  }
   ${ ({backgroundColor}) => backgroundColor && `
     &, > *, h2 span {
       background-color: ${ backgroundColor } !important;
@@ -65,7 +68,10 @@ const Head = styled.h2`
   &::before {
   content: "${ ({isOpen}) => isOpen ?  "-" : "+" }";
     position: absolute;
-    left: ${dist.spacer}
+    left: ${dist.spacer};
+    @media ${ breakpoints.small } {
+      left: ${dist.smallSpacer};
+    }
   }
 `
 
@@ -83,6 +89,10 @@ const Content = styled.div`
   overflow: hidden;
   height: ${ ({height}) => height };
   box-sizing: border-box;
+  div { 
+    ${ ({isOpen}) => isOpen ? null : "background-color:transparent !important;"};
+    transition: background-color 1s;
+  }
 `
 
 const InnerContent = styled.div`

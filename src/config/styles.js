@@ -4,28 +4,30 @@ const metrics = {
   },
   large: {
     fontSizePx: 30,
-    lineHeightPx: 32,
+    lineHeightPx: 33,
     lineTopPx: 5,
   },
   medium: {
-    fontSizePx: 26, // 20pt
-    lineHeightPx: 32, // 24pt
+    fontSizePx: 20,
+    lineHeightPx: 24,
     lineTopPx: 5,
   },
   small: {
-    fontSizePx: 20,
-    lineHeightPx: 22,
-    lineTopPx: 4,
-  }
+    fontSizePx: 15,
+    lineHeightPx: 18,
+    lineTopPx: 2,
+  }  
 }
 
 const breakpoints = {
-  small: "(max-width: 768px)"
+  small: "(max-width: 750px)",
+  smallPx: 750,
 }
 
 const dist = {
   lineTop: -metrics.large.lineTopPx + "px",
   spacer: "40px",
+  smallSpacer: "20px",
   largeButtonHeight: "60px",
   smallButtonHeight: "30px",
   letterWidth: "0.65em",
@@ -119,5 +121,6 @@ export {
   globalStyles,
   dist,
   colors,
-  snippets
+  snippets,
+  breakpoints
 }

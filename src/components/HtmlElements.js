@@ -1,13 +1,19 @@
 import styled from 'styled-components'
 import { Link } from 'components/Router'
 
-import { dist, snippets } from '../config/styles'
+import { dist, snippets, breakpoints } from '../config/styles'
  
 const blockStyle = `
   ${snippets.typography.topAdjust};
+
   padding-bottom: ${dist.spacer};
   margin-left: ${ dist.spacer };
   margin-right: ${ dist.spacer };
+  @media ${ breakpoints.small } {
+    padding-bottom: ${dist.smallSpacer};
+    margin-left: ${ dist.smallSpacer };
+    margin-right: ${ dist.smallSpacer };
+  }
   white-space: pre-wrap;
 `
 
@@ -66,6 +72,13 @@ const li = styled.li`
   text-indent: calc( -2 * ${ dist.letterWidth} );
 `
 
+const br = styled.br`
+${ ({onlySmall}) => onlySmall && "display: none;"}
+  @media ${ breakpoints.small } {
+    ${ ({onlySmall}) => onlySmall && "display: inline;"}
+  }
+`
+
 const a = styled.a`
   ${snippets.typography.underline};
   word-break: break-all;
@@ -76,7 +89,7 @@ const StyledLink = styled(Link)`
 `
 
 const LargeSpacer = styled.div`
-  height: 66vh;
+  height: 180px;
 `
 
 export {
@@ -89,6 +102,7 @@ export {
   em,
   ul,
   li,
+  br,
   StyledLink,
   LargeSpacer,
   BlockStyleDiv
