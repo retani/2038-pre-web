@@ -20,7 +20,7 @@ const Container = styled.span`
   color: ${ ({invert}) => !invert ? colors.white : colors.blue };
   font-size: ${ metrics.small.fontSizePx }px;
   line-height: ${ dist.smallButtonHeight };
-  transition: all 0.15s;
+  transition: all 0.3s !important;
   &:hover {
     background-color: ${ ({invert}) => !invert ? colors.white : colors.blue };
     color: ${ ({invert}) => invert ? colors.white : colors.blue };
