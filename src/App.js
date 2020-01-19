@@ -7,7 +7,7 @@ import { Router } from 'components/Router'
 import { globalStyles } from './config/styles'
 
 import MainVideo from 'components/MainVideo'
-import { p, table, dl, dd, dt, em, a, ul, li, br, LargeSpacer, StyledLink as Link } from 'components/HtmlElements'
+import { p, table, dl, dd, dt, em, a, ul, li, br, OnlyLarge, LargeSpacer, StyledLink as Link } from 'components/HtmlElements'
 import Spacer from 'components/Spacer'
 import Button from 'components/Button'
 import Ical from 'components/iCal'
@@ -36,7 +36,7 @@ function App() {
       </Head>
       <GlobalStyle />
       <React.Suspense fallback={<Loading />}>
-        <MDXProvider components={{ MainVideo, em, a, p, table, Spacer, Link, dl, dd, dt, ul, li, br, Spacer, LargeSpacer, Button, iCal: Ical, Accordion, Countdown, ImpLink, Document, Logos, ScrollTop }}>
+        <MDXProvider components={{ MainVideo, em, a, p, table, Spacer, Link, dl, dd, dt, ul, li, br, Spacer, LargeSpacer, Button, iCal: Ical, Accordion, Countdown, ImpLink, Document, Logos, ScrollTop, OnlyLarge }}>
           <Router>
             <Routes path="*" />
           </Router>

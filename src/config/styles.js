@@ -9,12 +9,12 @@ const metrics = {
   },
   medium: {
     fontSizePx: 20,
-    lineHeightPx: 24,
+    lineHeightPx: 25,
     lineTopPx: 5,
   },
   small: {
     fontSizePx: 15,
-    lineHeightPx: 18,
+    lineHeightPx: 19,
     lineTopPx: 2,
   }  
 }

@@ -17,7 +17,7 @@ const Container = styled.div`
   @media (min-width: ${breakpoints.smallPx+1}px) {
     font-size: ${ metrics.medium.fontSizePx }px;
     line-height: ${ metrics.medium.lineHeightPx }px;
-    max-width: 1060px;
+    max-width: 700px;
     margin-left: 120px;
     margin-right: 120px;
     padding-left: 10px;

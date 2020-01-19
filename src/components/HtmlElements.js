@@ -92,6 +92,14 @@ const LargeSpacer = styled.div`
   height: 180px;
 `
 
+const OnlyLarge = styled.span`
+  color:red;
+  display: inline;
+  @media ${ breakpoints.small } {
+    display: none;
+  }
+`
+
 export {
   p,
   a,
@@ -105,5 +113,6 @@ export {
   br,
   StyledLink,
   LargeSpacer,
-  BlockStyleDiv
+  BlockStyleDiv,
+  OnlyLarge
 }
