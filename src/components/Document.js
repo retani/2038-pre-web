@@ -11,6 +11,8 @@ export default ({children}) =>  <Center>
 
 const Container = styled.div`
   background-color: ${ colors.white };
+  margin-left: 20px;
+  margin-right: 20px;  
   max-width: 440px;
   font-size: ${ metrics.small.fontSizePx }px;
   line-height: ${ metrics.small.lineHeightPx }px;
