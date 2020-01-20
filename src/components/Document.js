@@ -11,13 +11,13 @@ export default ({children}) =>  <Center>
 
 const Container = styled.div`
   background-color: ${ colors.white };
-  max-width: 340px;
+  max-width: 440px;
   font-size: ${ metrics.small.fontSizePx }px;
   line-height: ${ metrics.small.lineHeightPx }px;
   @media (min-width: ${breakpoints.smallPx+1}px) {
     font-size: ${ metrics.medium.fontSizePx }px;
     line-height: ${ metrics.medium.lineHeightPx }px;
-    max-width: 700px;
+    max-width: 780px;
     margin-left: 120px;
     margin-right: 120px;
     padding-left: 10px;
