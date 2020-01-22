@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { metrics } from '../config/styles'
-
 export default ({onClick, style, isOn=false}) => {
   return <Container onClick={onClick} style={style}>
     <Svg viewBox="0 0 40 40">

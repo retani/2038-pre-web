@@ -50,6 +50,7 @@ const MainVideo = ({vimeoId}) => {
         responsive
         play={shouldPlay}
         id="player"
+        loop
         paused={!shouldPlay}
         controls={false}
         volume={1}
