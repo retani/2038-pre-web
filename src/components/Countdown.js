@@ -62,7 +62,7 @@ export default ({children, dateUTC}) =>  {
   const offsetText = <Text>
       <span>-{offset < 0 ? 0 : o.days}{!small ? "d " : ":"}</span>
       <span>{offset < 0 ? 0 : o.hours}{!small ? "h " : ":"}</span>
-      <span className="minutes">{offset < 0 ? 0 : o.minutes}{!small ? "h " : ":"}</span>
+      <span className="minutes">{offset < 0 ? 0 : o.minutes}{!small ? "m " : ":"}</span>
       <span className="seconds">{offset < 0 ? 0 : o.seconds}{!small ? "s" : ""}</span>
     </Text>
 
