@@ -23,7 +23,16 @@ var app = express()
 
 app.use(serveStatic('dist'))
 
-app.get('/rebuild-content', async function (req, res) {
+app.get('/rebuild-content', rebuild)
+app.post('/rebuild-content', rebuild)
+
+console.log("Listening to port " + port)
+app.listen(port)
+
+
+/*********************/
+
+async function rebuild (req, res) {
   for (file of files) {
     const url = urlPrefix + file
     const target = targetPath + file
@@ -31,13 +40,7 @@ app.get('/rebuild-content', async function (req, res) {
   }
   await execSync('npm run build')
   res.send('DONE')
-})
-
-console.log("Listening to port " + port)
-app.listen(port)
-
-
-/*********************/
+}
 
 async function download (url, target ) {  
   const path = Path.resolve(__dirname, target)
