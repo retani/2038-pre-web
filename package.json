@@ -39,5 +39,8 @@
     "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3"
+  },
+  "engines": {
+    "node": "12.x"
   }
 }
