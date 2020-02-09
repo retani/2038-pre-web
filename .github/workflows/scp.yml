@@ -1,0 +1,19 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: copy file via ssh password
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.DOKKU_HOST }}
+        username: ${{ secrets.DOKKU_USERNAME }}
+        key: ${{ secrets.DOKKU_SSH_KEY }}
+        port: ${{ secrets.DOKKU_PORT }}
+        source: "src/pages"
+        target: "src/pages"
