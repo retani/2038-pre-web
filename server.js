@@ -16,7 +16,7 @@ const files = [
 
 const urlPrefix = process.env.REMOTE_PAGES_PREFIX 
   ? process.env.REMOTE_PAGES_PREFIX.replace(/\/?$/, '/') 
-  : 'https://raw.githubusercontent.com/retani/2038-web/master/src/pages/'
+  : 'https://gitea.intergestalt.dev/retani/2038-web/raw/branch/master/src/pages/'
 const targetPath = 'src/pages/'
 
 var app = express()
@@ -33,16 +33,18 @@ app.listen(port)
 /*********************/
 
 async function rebuild (req, res) {
-  //for (file of files) {
-  //  const url = urlPrefix + file
-  //  const target = targetPath + file
-  //  await download(url, target)
-  //}
-  //res.send('Received Content')
-  console.log("rebuilding")
-  await execSync('npm run build')
-  //console.log("rebuild done")
-  res.send('DONE')
+  setTimeout( async ()=>{
+    for (file of files) {
+      const url = urlPrefix + file
+      const target = targetPath + file
+      await download(url, target)
+    }
+    res.send('Received Content')
+    console.log("received content")
+    await execSync('npm run build')
+    console.log("rebuild with new content")
+    //res.send('DONE')
+  },1000)
 }
 
 async function download (url, target ) {  
