@@ -1,4 +1,4 @@
-name: deploy to dokku
+name: deploy pages to dokku
 
 on: [push]
 
