@@ -39,11 +39,11 @@ async function rebuild (req, res) {
       const target = targetPath + file
       await download(url, target)
     }
-    res.send('Received Content')
+    //res.send('Received Content')
     console.log("received content")
     await execSync('npm run build')
     console.log("rebuild with new content")
-    //res.send('DONE')
+    res.send('DONE')
   },1000)
 }
 
