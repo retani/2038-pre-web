@@ -17,9 +17,9 @@ jobs:
     - name: deploy
       uses: s0/git-publish-subdir-action@master
       env:
-        REPO: dokku@intergestalt.monster:2038-pre-web
+        REPO: dokku@intergestalt.monster:2038-pages
         BRANCH: master
-        FOLDER: ./
+        FOLDER: ./src/pages
         SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
         KNOWN_HOSTS_FILE: resources/known_hosts  
 
